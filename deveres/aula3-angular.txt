@@ -1,0 +1,9 @@
+-criar um componente chamado cadastroFuncionario
+
+-colocar no html desse componente um formulario com os campos
+que constam no mock/pessoas.json
+
+-criar um botao submit com funcao de fazer um post para a seguinte apiurl:
+'https://node-vercel-app-rho.vercel.app/api/funcionarios'
+
+-nao se preocupe se nao conseguir fazer e nem se preocupe se a api retornar codigo 404
