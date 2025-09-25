@@ -1,0 +1,22 @@
+<h2>Lista de Pessoas</h2>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>Nome</th>
+
+    <th>Data de Nascimento</th>
+    <th>Optou VT</th>
+    <th>Salário Atual</th>
+    <th>Valor Passagem</th>
+  </tr>
+
+  <tr *ngFor="let item of apiDeverLista">
+    <td>{{ item.funcionario.nome }} {{ item.funcionario?.sobrenome }}</td>
+
+    <td>{{ item.funcionario.dtNascimento }}</td>
+    <td>{{ item.funcionario.optouVT == true ? 'Sim' : 'Não' }}</td>
+    <td>{{ item.funcionario.salarioAtual }}</td>
+    <td>{{ item.funcionario.valorPassagem }}</td>
+  </tr>
+</table>
+
+<button (click)="postAvisos()">Adicionar Pessoa</button>
