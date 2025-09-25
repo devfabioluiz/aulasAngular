@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class ListaFuncionario implements OnInit {
   constructor(private funcionarios: Funcionarios, private router: Router) {}
-  displayedColumns: string[] = ['nome', 'sobrenome', 'dtNascimento', 'salario'];
-  dataSource = [];
+  displayedColumns: string[] = ['nome', 'sobrenome', 'dtNascimento', 'salario', 'detalhes'];
+  funcionariosLista = [];
 
   ngOnInit() {
     this.getFuncionarios();
@@ -19,8 +19,7 @@ export class ListaFuncionario implements OnInit {
 
   getFuncionarios() {
     this.funcionarios.getUsers().subscribe((data: any) => {
-      this.dataSource = data;
-      
+      this.funcionariosLista = data;
     });
   }
 
