@@ -10,12 +10,12 @@
   </tr>
 
   <tr *ngFor="let item of apiDeverLista">
-    <td>{{ item.funcionario.nome }} {{ item.funcionario?.sobrenome }}</td>
+    <td>{{ item.nome }} {{ item?.sobrenome }}</td>
 
-    <td>{{ item.funcionario.dtNascimento }}</td>
-    <td>{{ item.funcionario.optouVT == true ? 'Sim' : 'Não' }}</td>
-    <td>{{ item.funcionario.salarioAtual }}</td>
-    <td>{{ item.funcionario.valorPassagem }}</td>
+    <td>{{ item.dtNascimento }}</td>
+    <td>{{ item.optouVT == true ? 'Sim' : 'Não' }}</td>
+    <td>{{ item.salarioAtual }}</td>
+    <td>{{ item.valorPassagem }}</td>
   </tr>
 </table>
 
