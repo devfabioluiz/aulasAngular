@@ -13,6 +13,10 @@ export class Funcionarios {
     return this.http.get(this.apiUrl);
   }
 
+  getUserById(id: string) {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
+
   postFuncionarios(funcionarioForm: any) {
     return this.http.post(this.apiUrl, funcionarioForm);
   }

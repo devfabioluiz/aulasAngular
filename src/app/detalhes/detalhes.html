@@ -1,3 +1,9 @@
 {{'Esta é a página do funcionário de id ' + idUsuario}}
 
-<app-card [title]="idUsuario"></app-card>
+<app-card 
+    [id]="idUsuario" 
+    [nome]="usuario.nome"
+    [sobrenome]="usuario.sobrenome"
+    [salarioAtual]="usuario.salarioAtual"
+    [endereco]="usuario.endereco"
+></app-card>

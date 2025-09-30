@@ -9,9 +9,10 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 })
 export class Card {
 
-  @Input() title: string = ''
-
-  subtitle: string = 'Dog Breed';
-  descricao: string = 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.'
+  @Input() id: string = '';
+  @Input() nome: string = '';
+  @Input() sobrenome: string = '';
+  @Input() salarioAtual: string = '';
+  @Input() endereco: string = '';
 
 }

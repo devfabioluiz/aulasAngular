@@ -1,13 +1,16 @@
 <mat-card class="example-card" appearance="outlined">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{title}}</mat-card-title>
-    <mat-card-subtitle>{{subtitle}}</mat-card-subtitle>
+    <mat-card-title>{{id}}</mat-card-title>
+    <mat-card-subtitle>{{nome + ' ' + sobrenome}}</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image src="https://material.angular.dev/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
     <p>
-      {{descricao}}
+      {{endereco}}
+    </p>
+    <p>
+      {{salarioAtual | currency: 'BRL'}}
     </p>
   </mat-card-content>
   <mat-card-actions>
