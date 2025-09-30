@@ -15,6 +15,9 @@ import { Configuracoes } from './configuracoes/configuracoes';
 import { Profile } from './profile/profile';
 import { Detalhes } from './detalhes/detalhes';
 import { MatTableModule } from '@angular/material/table';
+import { Card } from './card/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -27,8 +30,12 @@ import { MatTableModule } from '@angular/material/table';
     Configuracoes,
     Profile,
     Detalhes,
+    Card,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule, MatTableModule],
+  imports: [BrowserModule, AppRoutingModule,
+     HttpClientModule, ReactiveFormsModule, 
+     MatTableModule, MatButtonModule,
+    MatCardModule],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
 })
