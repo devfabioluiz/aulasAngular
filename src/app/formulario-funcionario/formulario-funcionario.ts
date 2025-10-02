@@ -27,7 +27,6 @@ export class FormularioFuncionario {
   });
 
   enviar() {
-    console.log(this.funcionarioForm.value);
     this.funcionarios.postFuncionarios(this.funcionarioForm.value).subscribe((data) => {
       console.log(data);
     });

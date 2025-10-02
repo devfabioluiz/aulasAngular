@@ -10,7 +10,7 @@ import { Profile } from './profile/profile';
 import { Detalhes } from './detalhes/detalhes';
 
 const routes: Routes = [
-  { path: 'cadastrar', component: FormularioFuncionario, canActivate: [AuthGuard] },
+  { path: 'cadastrar', component: FormularioFuncionario },
   { path: 'lista', component: ListaFuncionario },
   { path: '', redirectTo: '/lista', pathMatch: 'full' },
   { path: 'login', component: Login },

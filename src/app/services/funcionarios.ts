@@ -20,7 +20,7 @@ export class Funcionarios {
   }
 
   // CADASTRA UM FUNCIONÁRIO NA API/BANCO DE DADOS
-  postFuncionarios(funcionarioForm: any) {
-    return this.http.post(this.apiUrl, funcionarioForm);
+  postFuncionarios(formulario: any) {
+    return this.http.post(this.apiUrl, formulario);
   }
 }
