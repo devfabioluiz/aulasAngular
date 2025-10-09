@@ -20,10 +20,15 @@ export class ListaFuncionario implements OnInit {
   getFuncionarios() {
     this.funcionarios.getUsers().subscribe((data: any) => {
       this.funcionariosLista = data;
+      console.log(data);
     });
   }
 
   detalhesFuncionarios(id: number) {
     this.router.navigate(['/detalhes', id]);
+  }
+
+  cadastrarFuncionario() {
+    this.router.navigate(['/cadastrar']);
   }
 }

@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Funcionarios } from '../services/funcionarios';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-formulario-funcionario',
-  standalone: false,
+  standalone: true,
   templateUrl: './formulario-funcionario.html',
   styleUrl: './formulario-funcionario.css',
+  imports: [ReactiveFormsModule]
 })
 export class FormularioFuncionario {
-  constructor(private funcionarios: Funcionarios) {}
+  constructor(private funcionarios: Funcionarios, private router: Router) {}
   funcionarioForm = new FormGroup({
     nome: new FormControl('', [Validators.required, Validators.minLength(3)]),
     sobrenome: new FormControl('', Validators.required),
@@ -17,19 +20,18 @@ export class FormularioFuncionario {
     grauEscolaridade: new FormControl('', Validators.required),
     endereco: new FormControl('', Validators.required),
     foto: new FormControl('', Validators.required),
-    salarioAtual: new FormControl('', Validators.required),
+    salario: new FormControl('', Validators.required),
     valorPassagem: new FormControl('', Validators.required),
     optouVT: new FormControl('', Validators.required),
     cargo: new FormControl('', Validators.required),
-    salario: new FormControl('', Validators.required),
     dataInicio: new FormControl('', Validators.required),
-    dataFim: new FormControl('', Validators.required),
+    dataDemissao: new FormControl(null),
   });
 
   enviar() {
-    console.log(this.funcionarioForm.value);
     this.funcionarios.postFuncionarios(this.funcionarioForm.value).subscribe((data) => {
       console.log(data);
     });
+    this.router.navigate(['/lista']);
   }
 }

@@ -1,23 +1,36 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+interface LoginForm {
+  email: FormControl<string>;
+  password: FormControl<string>;
+}
 
 @Component({
   selector: 'app-login',
-  standalone: false,
   templateUrl: './login.html',
-  styleUrl: './login.css',
+  styleUrls: ['./login.css'],
+  standalone: true,
+  imports: [ReactiveFormsModule]
 })
 export class Login {
   constructor(private auth: AuthService, private router: Router) {}
-  funcionarioForm = new FormGroup({
-    nome: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    sobrenome: new FormControl('', Validators.required),
+
+  loginForm = new FormGroup<LoginForm>({
+    email: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    password: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
   });
 
-  login() {
-    this.auth.login('admin', 'admin');
+  submitForm(form: FormGroup<LoginForm>) {
+    if (form.invalid) {
+      return;
+    }
+
+    const email: string = form.controls.email.value;
+    const password: string = form.controls.password.value;
+    this.auth.login(email, password);
     this.router.navigate(['/lista']);
   }
 }

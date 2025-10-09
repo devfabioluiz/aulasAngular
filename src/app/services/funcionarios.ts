@@ -20,4 +20,9 @@ export class Funcionarios {
   postFuncionarios(funcionarioForm: any) {
     return this.http.post(this.apiUrl, funcionarioForm);
   }
+
+  deleteUserById(id: string) {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
 }
