@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import { Funcionarios } from '../services/funcionarios';
 
 @Component({
-  selector: 'app-card',
+  selector: 'card',
   standalone: false,
   templateUrl: './card.html',
   styleUrl: './card.css',

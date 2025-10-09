@@ -9,16 +9,19 @@ export class Funcionarios {
 
   constructor(private http: HttpClient) {}
 
+  // BUSCA E RETORNA TODOS OS FUNCIONÁRIOS CADASTRADOS NA API/BANCO DE DADOS
   getUsers() {
     return this.http.get(this.apiUrl);
   }
 
+  // BUSCA E RETORNA APENAS 1 FUNCIONÁRIO CADASTRADOS NA API/BANCO DE DADOS DE ACORDO COM O ID QUE VC PASSOU
   getUserById(id: string) {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
-  postFuncionarios(funcionarioForm: any) {
-    return this.http.post(this.apiUrl, funcionarioForm);
+  // CADASTRA UM FUNCIONÁRIO NA API/BANCO DE DADOS
+  postFuncionarios(formulario: any) {
+    return this.http.post(this.apiUrl, formulario);
   }
 
   deleteUserById(id: string) {
