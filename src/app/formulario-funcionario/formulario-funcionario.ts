@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Funcionarios } from '../services/funcionarios';
 import { Router } from '@angular/router';
 
@@ -8,7 +14,7 @@ import { Router } from '@angular/router';
   standalone: true,
   templateUrl: './formulario-funcionario.html',
   styleUrl: './formulario-funcionario.css',
-  imports: [ReactiveFormsModule]
+  imports: [ReactiveFormsModule],
 })
 export class FormularioFuncionario {
   constructor(private funcionarios: Funcionarios, private router: Router) {}
@@ -29,17 +35,15 @@ export class FormularioFuncionario {
   });
 
   enviar() {
-    console.log('Corpo enviado:', this.funcionarioForm.value); // 👈 Adicione aqui
-  
     this.funcionarios.postFuncionarios(this.funcionarioForm.value).subscribe({
       next: (data) => {
-        console.log('Resposta do servidor:', data);
+        console.log('Funcionario salvo:', data);
+        // Redireciona **só depois que o backend confirma**
         this.router.navigate(['/lista']);
       },
       error: (err) => {
-        console.error('Erro no envio:', err);
-      }
+        console.error('Erro ao salvar funcionario', err);
+      },
     });
   }
-
 }
