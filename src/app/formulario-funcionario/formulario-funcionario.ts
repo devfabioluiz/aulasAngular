@@ -35,15 +35,14 @@ export class FormularioFuncionario {
   });
 
   enviar() {
-    console.log('Corpo enviado:', this.funcionarioForm.value); // 👈 Adicione aqui
-
     this.funcionarios.postFuncionarios(this.funcionarioForm.value).subscribe({
       next: (data) => {
-        console.log('Resposta do servidor:', data);
+        console.log('Funcionario salvo:', data);
+        // Redireciona **só depois que o backend confirma**
         this.router.navigate(['/lista']);
       },
       error: (err) => {
-        console.error('Erro no envio:', err);
+        console.error('Erro ao salvar funcionario', err);
       },
     });
   }
