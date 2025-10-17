@@ -29,9 +29,16 @@ export class FormularioFuncionario {
   });
 
   enviar() {
-    this.funcionarios.postFuncionarios(this.funcionarioForm.value).subscribe((data) => {
-      console.log(data);
+    this.funcionarios.postFuncionarios(this.funcionarioForm.value).subscribe({
+      next: (data) => {
+        console.log('Funcionario salvo:', data);
+        // Redireciona **só depois que o backend confirma**
+        this.router.navigate(['/lista']);
+      },
+      error: (err) => {
+        console.error('Erro ao salvar funcionario', err);
+      }
     });
-    this.router.navigate(['/lista']);
   }
+
 }
