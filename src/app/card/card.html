@@ -8,6 +8,7 @@
   <mat-card-content>
     <p>
       {{endereco}}
+      
     </p>
     <p [ngClass]="{'salario-alto': salarioAtual >= 3000}">
       {{salarioAtual | currency: 'BRL'}}
