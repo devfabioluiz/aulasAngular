@@ -32,9 +32,4 @@ export class Funcionarios {
   deleteUser(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
-
-  deleteUser3(id: number): Observable<any> {
-  return this.http.delete(`${this.apiUrl}/${id}`);
-  }
-
 }
