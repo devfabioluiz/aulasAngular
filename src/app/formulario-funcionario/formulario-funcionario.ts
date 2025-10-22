@@ -29,9 +29,16 @@ export class FormularioFuncionario {
   });
 
   enviar() {
-    this.funcionarios.postFuncionarios(this.funcionarioForm.value).subscribe((data) => {
-      console.log(data);
+    console.log('Corpo enviado:', this.funcionarioForm.value); // 👈 Adicione aqui
+  
+    this.funcionarios.postFuncionarios(this.funcionarioForm.value).subscribe({
+      next: (data) => {
+        console.log('Resposta do servidor:', data);
+        this.router.navigate(['/lista']);
+      },
+      error: (err) => {
+        console.error('Erro no envio:', err);
+      }
     });
-    this.router.navigate(['/lista']);
   }
 }
