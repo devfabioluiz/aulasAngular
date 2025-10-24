@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   styleUrl: './lista-funcionario.css',
 })
 export class ListaFuncionario implements OnInit {
-  snackBar: any;
   constructor(private funcionarios: Funcionarios, private router: Router) {}
   displayedColumns: string[] = ['nome', 'sobrenome', 'dtNascimento', 'salario', 'detalhes'];
   funcionariosLista = [];
@@ -20,6 +19,7 @@ export class ListaFuncionario implements OnInit {
 
   getFuncionarios() {
     this.funcionarios.getUsers().subscribe((data: any) => {
+      console.log(data);
       this.funcionariosLista = data;
       console.log(data);
     });
@@ -36,5 +36,4 @@ export class ListaFuncionario implements OnInit {
   cadastrarFuncionario() {
     this.router.navigate(['/cadastrar']);
   }
-
 }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -27,14 +26,6 @@ export class Funcionarios {
 
   deleteUserById(id: string) {
     return this.http.delete(`${this.apiUrl}/${id}`);
-  }
-
-  deleteUser(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
-  }
-
-  deleteUser3(id: number): Observable<any> {
-  return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
 }

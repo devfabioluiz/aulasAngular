@@ -15,7 +15,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { Fabio } from './fabio/fabio';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -31,8 +30,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   ],
   imports: [BrowserModule, AppRoutingModule,
      HttpClientModule, ReactiveFormsModule,
-     MatTableModule, MatButtonModule, 
-    MatCardModule, MatSnackBarModule],
+     MatTableModule, MatButtonModule,
+    MatCardModule],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
 })
