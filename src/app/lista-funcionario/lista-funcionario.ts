@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Funcionarios } from '../services/funcionarios';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-lista-funcionario',
@@ -38,23 +37,4 @@ export class ListaFuncionario implements OnInit {
     this.router.navigate(['/cadastrar']);
   }
 
-  deletarFuncionario(id: number) {
-    this.funcionarios.deleteUser(id).subscribe({
-      next: () => {
-        this.getFuncionarios();
-        this.snackBar.open('Funcionário deletado com sucesso!', 'Fechar', {
-          duration: 3000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top',
-        });
-      },
-      error: () => {
-        this.snackBar.open('Erro ao deletar funcionário.', 'Fechar', {
-          duration: 3000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top',
-        });
-      }
-    });
-  }
 }
