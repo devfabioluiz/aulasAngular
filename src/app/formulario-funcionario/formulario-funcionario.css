@@ -1,0 +1,16 @@
+.form-field {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  color: red;
+  font-size: 14px;
+}
+
+.invalid-field {
+  border: 1px solid red;
+}

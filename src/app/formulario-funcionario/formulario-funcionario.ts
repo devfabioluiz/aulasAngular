@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Funcionarios } from '../services/funcionarios';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-formulario-funcionario',
   standalone: true,
   templateUrl: './formulario-funcionario.html',
   styleUrl: './formulario-funcionario.css',
-  imports: [ReactiveFormsModule]
+  imports: [ReactiveFormsModule, CommonModule]
 })
 export class FormularioFuncionario {
-  constructor(private funcionarios: Funcionarios, private router: Router) {}
+
   funcionarioForm = new FormGroup({
     nome: new FormControl('', [Validators.required, Validators.minLength(3)]),
     sobrenome: new FormControl('', Validators.required),
@@ -22,24 +23,31 @@ export class FormularioFuncionario {
     foto: new FormControl('', Validators.required),
     salario: new FormControl('', Validators.required),
     valorPassagem: new FormControl('', Validators.required),
-    optouVT: new FormControl('', Validators.required),
+    optouVT: new FormControl(false),
     cargo: new FormControl('', Validators.required),
     dataInicio: new FormControl('', Validators.required),
     dataDemissao: new FormControl(null),
   });
 
-  enviar() {
-    console.log('Corpo enviado:', this.funcionarioForm.value); // 👈 Adicione aqui
-  
-    this.funcionarios.postFuncionarios(this.funcionarioForm.value).subscribe({
-      next: (data) => {
-        console.log('Resposta do servidor:', data);
-        this.router.navigate(['/lista']);
-      },
-      error: (err) => {
-        console.error('Erro no envio:', err);
-      }
-    });
+  constructor(
+    private funcionarios: Funcionarios, 
+    private router: Router
+  ) {}
+
+  campoInvalido(campo: string) {
+    const control = this.funcionarioForm.get(campo);
+    return control && control.invalid;
   }
 
+  enviar() {
+    if (this.funcionarioForm.invalid) {
+      return;
+    }
+
+    this.funcionarios.postFuncionarios(this.funcionarioForm.value)
+      .subscribe((data: any) => {
+        console.log('Funcionário cadastrado:', data);
+        this.router.navigate(['/lista']);
+      });
+  }
 }
